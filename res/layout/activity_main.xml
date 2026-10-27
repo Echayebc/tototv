@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#000"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"/>
+
+    <EditText android:id="@+id/et_user" android:hint="السطر 1: kwpnjanu" android:textSize="28sp" android:textColor="#fff" android:background="#222" android:padding="24dp" android:layout_marginTop="16dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/et_pass" android:hint="السطر 2: qpzgktes" android:textSize="28sp" android:textColor="#fff" android:background="#222" android:padding="24dp" android:layout_marginTop="12dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/et_host" android:hint="السطر 3: http://kdfgh.com" android:textSize="28sp" android:textColor="#fff" android:background="#222" android:padding="24dp" android:layout_marginTop="12dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/btn_connect" android:text="🔌 اتصال مباشر" android:textSize="32sp" android:textStyle="bold" android:backgroundTint="#ffcc00" android:layout_marginTop="20dp" android:layout_width="match_parent" android:layout_height="80dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
