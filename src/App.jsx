@@ -110,4 +110,37 @@ export default function App() {
 
         <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px', marginBottom:'20px'}}>
           {SERVERS.map(s => (
-            <button key={s.id} onClick={()=>loadFromUrl(s)} style={{padding:'28px 8px', borderRadius:'16px',
+            <button key={s.id} onClick={()=>loadFromUrl(s)} style={{padding:'28px 8px', borderRadius:'16px', border:'none', background: activeServer===s.id ? '#ffcc00' : '#1e1e1e', color: activeServer===s.id ? '#000' : '#fff', fontWeight:'900', fontSize:'28px'}}>
+              {s.name}
+            </button>
+          ))}
+        </div>
+
+        <div style={{display:'flex', gap:'10px', marginBottom:'16px'}}>
+          <input value={customUrl} onChange={e=>setCustomUrl(e.target.value)} placeholder="رابط M3U..." style={{flex:1, padding:'26px', borderRadius:'16px', border:'none', background:'#1a1a1a', color:'#fff', fontSize:'30px'}} />
+          <button onClick={()=>{ if(customUrl.trim()) loadFromUrl({id:'custom', url:customUrl.trim()}) }} style={{padding:'26px 34px', borderRadius:'16px', border:'none', background:'#ffcc00', color:'#000', fontWeight:'900', fontSize:'32px'}}>شغل</button>
+        </div>
+
+        <label style={{display:'block', background:'#222', padding:'28px', borderRadius:'16px', textAlign:'center', marginBottom:'20px', fontSize:'34px', fontWeight:'900'}}>
+          📂 رفع ملف M3U
+          <input type="file" accept=".m3u,.m3u8,.txt" onChange={handleFile} style={{display:'none'}} />
+        </label>
+
+        {loading && <div style={{textAlign:'center', color:'#ffcc00', fontSize:'40px', padding:'24px', fontWeight:'900'}}>⏳ يحمل...</div>}
+
+        {channels.length > 0 && (
+          <>
+            <input placeholder="🔍 ابحث..." value={search} onChange={e=>setSearch(e.target.value)} style={{width:'100%', padding:'26px', borderRadius:'16px', border:'none', background:'#1a1a1a', color:'#fff', marginBottom:'16px', fontSize:'32px', boxSizing:'border-box'}} />
+            <div style={{display:'grid', gap:'14px'}}>
+              {filtered.slice(0,600).map((ch, i) => (
+                <div key={i} onClick={()=>playChannel(ch, i)} style={{padding:'26px', background: current?.url===ch.url ? '#ffcc00' : '#141414', color: current?.url===ch.url ? '#000' : '#fff', borderRadius:'16px', fontSize:'34px', fontWeight:'900'}}>
+                  ▶️ {ch.name}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
